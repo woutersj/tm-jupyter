@@ -35,12 +35,12 @@ def data_end():
 
 
 def texmacs_escape(data):
-    return data.replace(DATA_ESCAPE.encode(), (DATA_ESCAPE + DATA_ESCAPE).encode()) \
-               .replace(DATA_BEGIN.encode(), (DATA_ESCAPE + DATA_BEGIN).encode()) \
-               .replace(DATA_END.encode(), (DATA_ESCAPE + DATA_END).encode())
+    return data.replace(DATA_ESCAPE, DATA_ESCAPE + DATA_ESCAPE) \
+               .replace(DATA_BEGIN, DATA_ESCAPE + DATA_BEGIN) \
+               .replace(DATA_END, DATA_ESCAPE + DATA_END)
 
 def filter_ansi(text):
-    # FIlter out ansi color codes
+    # Filter out ansi color codes
     # TODO: use regex matches to substitute with TeXmacs Scheme tags and flush_scheme
     #
     # https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
@@ -63,11 +63,11 @@ def flush_any (out_str):
     Output results back to TeXmacs, with the DATA_BEGIN,
     DATA_END control characters."""
     data_begin()
-    os.sys.stdout.write(filter_ansi(out_str))
+    os.sys.stdout.write(texmacs_escape(out_str))
     data_end()
 
 def flush_verbatim(content):
-    flush_any ("verbatim:" + content)
+    flush_any ("verbatim:" + filter_ansi(content))
 
 def flush_latex(content):
     flush_any ("latex:" + content)
