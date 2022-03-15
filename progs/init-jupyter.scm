@@ -33,6 +33,7 @@
   (:require (url-exists-in-path? "python"))
   (:require (url-exists-in-path? "tm_jupyter"))
   (:require (url-exists-in-path? "tm_kernelspecs"))
+  (:require (not(equal? (eval-system "tm_kernelspecs") "")))
   (:launch ,(jupyter-launcher ""))
   ,@(jupyter-launchers)
   (:serializer ,jupyter-serialize)
