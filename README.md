@@ -2,9 +2,9 @@
 
 Version 0.2.0 -- (c) 2021 Massimiliano Gubinelli, Jeroen Wouters
 
-Allows for interactive TeXmacs sessions with Jupyter kernels such as IPython, IJulia, IRKernel, IHaskell.
+Allows for interactive TeXmacs sessions with Jupyter kernels such as IPython, IJulia, IRKernel, IHaskell,....
 
-In development, many things to fix: history, rich output, non-textual output, interaction, help...
+In development, many things to fix: rich output, interaction, help...
 
 Based on jupyter_console, a terminal-based console frontend for Jupyter kernels.
 jupyter_console is released under a modified BSD license, see COPYING.md
